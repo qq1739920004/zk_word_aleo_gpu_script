@@ -87,7 +87,7 @@
     - **哈希算法**: aleo
     - **钱包和工作模板**: %WAL%
     - **池 URL**: aleo.hk.zk.work:10003
-
+官方连接：（https://github.com/6block/zkwork_aleo_gpu_worker/blob/master/README.md）
 3. **开始 Flight Sheet**
 
     在 HiveOS 控制面板中配置完 Flight Sheet 后，点击 "Start Flight Sheet" 启动挖矿程序。
