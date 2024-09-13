@@ -188,30 +188,26 @@ function update_script() {
 # 监控日志文件
 function monitor_ports_log() {
     local log_file="/root/aleo_prover/prover.log"
-    local check_interval=80  # 每次检查之间的间隔时间（秒），同时也是文件未更新的最大允许时间
-    local is_running=false  # 标记程序是否正常运行
-
-    # 获取文件最后修改时间
-    local last_mod_time=$(stat -c %Y "$log_file" 2>/dev/null || echo 0)
+    local check_interval=80  # 监控间隔时间，也作为文件未更新的最大允许时间
+    local last_line_count=$(wc -l "$log_file" 2>/dev/null || echo 0)
+    local is_running=false
 
     while true; do
         sleep $check_interval
-        
-        if [ -f "$log_file" ]; then
-            # 获取当前文件的最后修改时间
-            local current_mod_time=$(stat -c %Y "$log_file")
 
-            # 如果文件最后修改时间没有变化，且超过指定时间
-            if (( current_mod_time == last_mod_time )); then
+        if [ -f "$log_file" ]; then
+            local current_line_count=$(wc -l "$log_file" | awk '{print $1}')
+
+            if (( current_line_count == last_line_count )); then
                 # 文件没有更新，程序卡住，执行重启操作
                 if $is_running; then
-                    echo "prover.log 文件在过去 $check_interval 秒内没有更新，准备重新启动矿工..." | tee -a "$log_file"
-                    
+                    echo "$(date) prover.log 文件在过去 $check_interval 秒内没有更新，准备重新启动矿工..." | tee -a "$log_file"
+
                     # 重启矿工
                     restart_miner
 
                     # 在 prover.log 文件中记录重启日志
-                    echo "矿工程序于 $(date) 重启。" >> "$log_file"
+                    echo "$(date) 矿工程序重启。" >> "$log_file"
 
                     # 将状态重置为“不正常”
                     is_running=false
@@ -219,20 +215,18 @@ function monitor_ports_log() {
             else
                 # 文件有更新，表示运行正常
                 if ! $is_running; then
-                    echo "监控到程序正常运行，prover.log 正在更新。" | tee -a "$log_file"
+                    echo "$(date) 监控到程序正常运行，prover.log 正在更新。" | tee -a "$log_file"
                     is_running=true
                 fi
 
-                # 更新最后修改时间
-                last_mod_time=$current_mod_time
+                # 更新行数
+                last_line_count=$current_line_count
             fi
         else
-            echo "无法找到 prover.log 文件，可能矿工未正确启动。"
+            echo "$(date) 无法找到 prover.log 文件，可能矿工未正确启动。" | tee -a "$log_file"
         fi
     done
-
 }
-
 # 主菜单
 function main_menu() {
     while true; do
@@ -240,10 +234,10 @@ function main_menu() {
         echo "zk.word社区一键 zkwork_aleo 脚本"
         echo "开发者: $DEVELOPER"
         echo "==========================="
-        echo "1. 安装并运行 zkwork_aleo 挖矿程序（监控日志重启，最新版 0.1.1）"
-        echo "2. 安装并运行 zkwork_aleo 挖矿程序（监控日志重启,最新hot 0.1.1版本）"
-        echo "3. 安装并运行 zkwork_aleo 挖矿程序（监控日志重启,hot 版本 0.1.0）"
-        echo "4. 安装并运行 zkwork_aleo 挖矿程序（监控日志重启,标准版 0.1.0）"
+        echo "1. 安装并运行 zkwork_aleo 挖矿程序（监控，最新版 0.1.1）"
+        echo "2. 安装并运行 zkwork_aleo 挖矿程序（监控,最新hot 0.1.1版本）"
+        echo "3. 安装并运行 zkwork_aleo 挖矿程序（监控,hot 版本 0.1.0）"
+        echo "4. 安装并运行 zkwork_aleo 挖矿程序（监控,标准版 0.1.0）"
         echo "5. 查看挖矿日志"
         echo "6. 重启 zkwork_aleo 挖矿程序"
         echo "7. 卸载 zkwork_aleo 挖矿程序"
