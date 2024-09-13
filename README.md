@@ -63,7 +63,11 @@
     脚本会卸载矿工程序并删除相关文件：
 
     ```bash
-    sudo ./zkwork_aleo.sh
+    # 停止矿工
+    pkill -f run_prover.sh
+    # 删除安装文件
+    rm -rf aleo_prover
+    rm -f aleo_prover-v0.1.1_hot.tar.gz
     ```
 
     选择卸载矿工选项。
