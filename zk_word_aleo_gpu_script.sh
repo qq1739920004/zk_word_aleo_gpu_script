@@ -75,7 +75,7 @@ function install_and_run_hot_miner_v0_1_0() {
     cd /root
 
     # 下载 zkwork 矿工（hot 版本 v0.1.0）
-    wget https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.1.0/aleo_prover-v0.1.0_hot.tar.gz
+    wget https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.1.1-hot/aleo_prover-v0.1.0_hot.tar.gz
 
     # 解压和进入目录
     tar -zvxf aleo_prover-v0.1.0_hot.tar.gz && cd aleo_prover
