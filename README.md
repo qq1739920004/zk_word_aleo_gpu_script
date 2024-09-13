@@ -2,28 +2,27 @@
 
 ## 介绍
 
-这是一个用于管理 zkwork_aleo 矿工程序的脚本，适用于 Ubuntu 系统。该脚本支持安装、运行、重启和卸载矿工程序。此文档还包括 HiveOS 的配置教程。
+这是一个用于管理 zkwork_aleo 矿工程序的脚本，适用于 Ubuntu 系统。该脚本支持安装、运行、重启和卸载矿工程序。一键脚本是ubuntu，此文档还包括 HiveOS 的配置教程。
 
 ## 开发者
 
 此脚本由 ZK.Work 的 DC 社区中 KarenL 开发。
 
-## 特性
+## 功能
 
-- 安装并运行 zkwork_aleo 挖矿程序
-- 查看挖矿日志
-- 重启 zkwork_aleo 挖矿程序
-- 卸载 zkwork_aleo 挖矿程序
+- 1.一键安装并运行 zkwork_aleo 挖矿程序
+- 2.查看挖矿日志
+- 3.重启 zkwork_aleo 挖矿程序
+- 4.卸载 zkwork_aleo 挖矿程序
 
 ## 使用说明
 
 ### Ubuntu 上的使用
 
-1. **下载脚本**
+1. **一键下载并运行**
 
     ```bash
-    wget <脚本下载地址> -O zkwork_aleo.sh
-    chmod +x zkwork_aleo.sh
+    wget https://github.com/qq1739920004/zk_word_aleo_gpu_script/edit/master/zk_word_aleo_gpu_script.sh -O zkwork_aleo.sh  && chmod +x zkwork_aleo.sh && ./zkwork_aleo.sh
     ```
 
 2. **运行脚本**
