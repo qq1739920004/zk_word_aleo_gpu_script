@@ -7,7 +7,7 @@
 1. **一键下载并运行**
 
     ```bash
-    wget https://raw.githubusercontent.com/qq1739920004/zk_word_aleo_gpu_script/master/zk_word_aleo_gpu_script.sh -O zkwork_aleo.sh  && chmod +x zkwork_aleo.sh && ./zkwork_aleo.sh
+    wget https://raw.githubusercontent.com/qq1739920004/zk_word_aleo_gpu_script/dev/zk_word_aleo_gpu_script.sh -O zkwork_aleo.sh  && chmod +x zkwork_aleo.sh && ./zkwork_aleo.sh
     ```
 ### 图文教程
 1.**运行脚本**
@@ -25,7 +25,7 @@
 1. **一键下载并运行**
 
     ```bash
-    wget https://github.com/qq1739920004/zk_word_aleo_gpu_script/edit/master/zk_word_aleo_gpu_script.sh -O zkwork_aleo.sh  && chmod +x zkwork_aleo.sh && ./zkwork_aleo.sh
+    wget https://raw.githubusercontent.com/qq1739920004/zk_word_aleo_gpu_script/dev/zk_word_aleo_gpu_script.sh -O zkwork_aleo.sh  && chmod +x zkwork_aleo.sh && ./zkwork_aleo.sh
     ```
 
 2. **运行脚本**
