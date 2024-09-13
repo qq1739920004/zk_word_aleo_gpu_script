@@ -152,7 +152,7 @@ function uninstall_miner() {
 
     echo "矿工程序已卸载。"
 }
-
+ 
 # 主菜单
 function main_menu() {
     while true; do
