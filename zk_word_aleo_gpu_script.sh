@@ -187,11 +187,18 @@ function update_script() {
 
 #
 # 监控矿工程序
+# 监控矿工程序
 function monitor_ports_log() {
     local log_file="/root/aleo_prover/prover.log"
     local check_interval=5  # 监控间隔时间设置为5秒
     local process_name="aleo_prover"
     local is_running=false
+
+    # 确保日志文件存在且可写
+    if [ ! -f "$log_file" ]; then
+        touch "$log_file"
+        chmod 666 "$log_file"
+    fi
 
     while true; do
         sleep $check_interval
@@ -222,6 +229,7 @@ function monitor_ports_log() {
         fi
     done
 }
+
 
 # 主菜单
 function main_menu() {
