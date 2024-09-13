@@ -16,6 +16,11 @@
 - 4.卸载 zkwork_aleo 挖矿程序
 
 ## 使用说明
+1. **一键下载并运行**
+
+    ```bash
+    wget https://raw.githubusercontent.com/qq1739920004/zk_word_aleo_gpu_script/master/zk_word_aleo_gpu_script.sh -O zkwork_aleo.sh  && chmod +x zkwork_aleo.sh && ./zkwork_aleo.sh
+    ```
 ### 图文教程
 1.**运行脚本**
 
@@ -25,12 +30,8 @@
 ![image](https://github.com/user-attachments/assets/608bfc26-509f-42fe-8361-ec207c3f58ae)
 
 
-1. **一键下载并运行**
 
-    ```bash
-    wget https://raw.githubusercontent.com/qq1739920004/zk_word_aleo_gpu_script/master/zk_word_aleo_gpu_script.sh -O zkwork_aleo.sh  && chmod +x zkwork_aleo.sh && ./zkwork_aleo.sh
-    ```
-2. **输入1**
+
 ### 文字教程
 
 1. **一键下载并运行**
