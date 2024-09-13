@@ -19,23 +19,23 @@ function install_and_run_miner() {
     cd /root
 
     # 下载 zkwork 矿工
-   wget https://raw.githubusercontent.com/qq1739920004/zk_word_aleo_gpu_script/master/zk_word_aleo_gpu_script.sh -O zkwork_aleo.sh  && chmod +x zkwork_aleo.sh && ./zkwork_aleo.sh
+    wget https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.1.1-hot/aleo_prover-v0.1.1_hot.tar.gz
 
     # 解压和进入目录
     tar -zvxf aleo_prover-v0.1.1_hot.tar.gz && cd aleo_prover
 
     # 更新 Aleo 地址并设置自定义矿工名称
     read -p "输入自定义矿工名称: " miner_name
-    sed -i "s/^ALGO=.*$/ALGO=aleo/" run_prover.sh
-    sed -i "s/^ADDRESS=.*$/ADDRESS=$aleo_address/" run_prover.sh
-    sed -i "s/^MINER_NAME=.*$/MINER_NAME=$miner_name/" run_prover.sh
+    sed -i "s/^reward_address=.*$/reward_address=$aleo_address/" run_prover.sh
+    sed -i "s/^custom_name=\".*\"$/custom_name=\"$miner_name\"/" run_prover.sh
 
     # 启动矿工
     chmod +x run_prover.sh
     ./run_prover.sh &
 
-    # 自动查看日志
-    tail -f /root/aleo_prover/prover.log
+    # 提示用户矿工已启动
+    echo "矿工已启动！"
+    echo "你可以使用 'tail -f /root/aleo_prover/prover.log' 命令来查看日志。"
 }
 
 # 查看挖矿日志
@@ -45,18 +45,14 @@ function view_logs() {
 
 # 重启 zkwork_aleo 挖矿程序
 function restart_miner() {
-    # 停止运行的矿工
-    pkill -f run_prover.sh
+    echo "正在重启 zkwork_aleo 挖矿程序..."
 
-    # 确保矿工程序已停止
-    sleep 5
-
-    # 重新启动矿工
-    cd /root/aleo_prover
+    # 重新执行 run_prover.sh
+    cd /root/aleo_prover || { echo "无法进入目录 /root/aleo_prover"; exit 1; }
     ./run_prover.sh &
 
-    # 自动查看日志
-    tail -f /root/aleo_prover/prover.log
+    # 确认矿工是否已成功启动
+        echo "矿工已成功重启！"
 }
 
 # 卸载 zkwork_aleo 挖矿程序
@@ -75,7 +71,7 @@ function uninstall_miner() {
 function main_menu() {
     while true; do
         clear
-        echo "Ubuntu 上的 zkwork_aleo 矿工管理脚本"
+        echo "zk.word社区一键 zkwork_aleo 脚本"
         echo "开发者: $DEVELOPER"
         echo "==========================="
         echo "1. 安装并运行 zkwork_aleo 挖矿程序"
