@@ -186,9 +186,10 @@ function update_script() {
 }
 
 #
+# 监控矿工程序
 function monitor_ports_log() {
     local log_file="/root/aleo_prover/prover.log"
-    local check_interval=5  # 监控间隔时间
+    local check_interval=5  # 监控间隔时间设置为5秒
     local process_name="aleo_prover"
     local is_running=false
 
@@ -198,8 +199,10 @@ function monitor_ports_log() {
         # 检查程序是否在运行
         if pgrep -f "$process_name" > /dev/null; then
             if ! $is_running; then
-                echo "$(date) 监控到程序正常运行: $process_name" | tee -a "$log_file"
+                echo "$(date) 程序 $process_name 正在运行。" | tee -a "$log_file"
                 is_running=true
+            else
+                echo "$(date) 程序 $process_name 仍在运行。" | tee -a "$log_file"
             fi
         else
             if $is_running; then
@@ -219,6 +222,7 @@ function monitor_ports_log() {
         fi
     done
 }
+
 # 主菜单
 function main_menu() {
     while true; do
