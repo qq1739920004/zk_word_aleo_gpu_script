@@ -3,32 +3,23 @@
 ## 介绍
 
 这是一个用于管理 zkwork_aleo 矿工程序的脚本，适用于 Ubuntu 系统。该脚本支持安装、运行、重启和卸载矿工程序。一键脚本是ubuntu，此文档还包括 HiveOS 的配置教程。
-
-## 开发者
-
-此脚本由 ZK.Work 的 DC 社区中 KarenL 开发。
-
-## 功能
-
-- 1.一键安装并运行 zkwork_aleo 挖矿程序
-- 2.查看挖矿日志
-- 3.重启 zkwork_aleo 挖矿程序
-- 4.卸载 zkwork_aleo 挖矿程序
-
 ## 使用说明
-### 图文教程
-1.**运行脚本**
-![image](https://github.com/user-attachments/assets/8b90dd11-600a-4bd8-864d-c5f6f7896808)
-2.**查看日志**
-![image](https://github.com/user-attachments/assets/608bfc26-509f-42fe-8361-ec207c3f58ae)
-
-
 1. **一键下载并运行**
 
     ```bash
     wget https://raw.githubusercontent.com/qq1739920004/zk_word_aleo_gpu_script/master/zk_word_aleo_gpu_script.sh -O zkwork_aleo.sh  && chmod +x zkwork_aleo.sh && ./zkwork_aleo.sh
     ```
-2. **输入1**
+### 图文教程
+1.**运行脚本**
+
+![image](https://github.com/user-attachments/assets/8b90dd11-600a-4bd8-864d-c5f6f7896808)
+2.**查看日志**
+
+![image](https://github.com/user-attachments/assets/608bfc26-509f-42fe-8361-ec207c3f58ae)
+
+
+
+
 ### 文字教程
 
 1. **一键下载并运行**
@@ -100,11 +91,15 @@
 3. **开始 Flight Sheet**
 
     在 HiveOS 控制面板中配置完 Flight Sheet 后，点击 "Start Flight Sheet" 启动挖矿程序。
+## 开发者
 
-## 联系方式
+此脚本由 ZK.Work 的 DC 社区中 KarenL 开发。
 
-如果你在使用脚本或配置 HiveOS 时遇到问题，可以通过以下方式联系开发者：
+## 功能
 
-- **Telegram**: [链接](https://t.me/niuwuriji)
-- **Discord**: [链接](https://discord.gg/GbMV5EcNWF)
+- 1.一键安装并运行 zkwork_aleo 挖矿程序
+- 2.查看挖矿日志
+- 3.重启 zkwork_aleo 挖矿程序
+- 4.卸载 zkwork_aleo 挖矿程序
+
 
