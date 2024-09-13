@@ -1,4 +1,4 @@
-# zkwork_aleo 矿工管理脚本
+# zkwork_aleo 挖矿一键脚本
 
 ## 介绍
 
