@@ -33,12 +33,12 @@ function install_and_run_miner() {
     chmod +x run_prover.sh
     ./run_prover.sh &
 
-    # 启动日志监控
-    monitor_ports_log &
+    # 启动进程监控
+    monitor_process &
 
     # 提示用户矿工已启动
     echo "矿工已启动！"
-    echo "你可以使用 'tail -f /root/aleo_prover/prover.log' 命令来查看日志。"
+    echo "你可以使用 'top' 命令查看进程状态。"
 }
 
 # 安装并运行 zkwork_aleo 挖矿程序（hot 版本）
@@ -64,12 +64,12 @@ function install_and_run_hot_miner() {
     chmod +x run_prover.sh
     ./run_prover.sh &
 
-    # 启动日志监控
-    monitor_ports_log &
+    # 启动进程监控
+    monitor_process &
 
     # 提示用户矿工已启动
     echo "矿工已启动！"
-    echo "你可以使用 'tail -f /root/aleo_prover/prover.log' 命令来查看日志。"
+    echo "你可以使用 'top' 命令查看进程状态。"
 }
 
 # 安装并运行 zkwork_aleo 挖矿程序（hot 版本 0.1.0）
@@ -95,12 +95,12 @@ function install_and_run_hot_miner_v0_1_0() {
     chmod +x run_prover.sh
     ./run_prover.sh &
 
-    # 启动日志监控
-    monitor_ports_log &
+    # 启动进程监控
+    monitor_process &
 
     # 提示用户矿工已启动
     echo "矿工已启动！"
-    echo "你可以使用 'tail -f /root/aleo_prover/prover.log' 命令来查看日志。"
+    echo "你可以使用 'top' 命令查看进程状态。"
 }
 
 # 安装并运行 zkwork_aleo 挖矿程序（标准版 0.1.0）
@@ -126,12 +126,12 @@ function install_and_run_miner_v0_1_0() {
     chmod +x run_prover.sh
     ./run_prover.sh &
 
-    # 启动日志监控
-    monitor_ports_log &
+    # 启动进程监控
+    monitor_process &
 
     # 提示用户矿工已启动
     echo "矿工已启动！"
-    echo "你可以使用 'tail -f /root/aleo_prover/prover.log' 命令来查看日志。"
+    echo "你可以使用 'top' 命令查看进程状态。"
 }
 
 # 查看挖矿日志
@@ -142,6 +142,9 @@ function view_logs() {
 # 重启 zkwork_aleo 挖矿程序
 function restart_miner() {
     echo "正在重启 zkwork_aleo 挖矿程序..."
+
+    # 停止当前的矿工进程
+    pkill -f run_prover.sh
 
     # 重新执行 run_prover.sh
     cd /root/aleo_prover || { echo "无法进入目录 /root/aleo_prover"; exit 1; }
@@ -185,80 +188,62 @@ function update_script() {
     fi
 }
 
-# 监控日志文件
-function monitor_ports_log() {
-    local log_file="/root/aleo_prover/prover.log"
-    local check_interval=80  # 监控间隔时间，也作为文件未更新的最大允许时间
-    local last_line_count=$(wc -l "$log_file" 2>/dev/null || echo 0)
+# 监控进程
+function monitor_process() {
+    local process_name="aleo_prover"
+    local check_interval=80  # 监控间隔时间
     local is_running=false
 
     while true; do
         sleep $check_interval
 
-        if [ -f "$log_file" ]; then
-            local current_line_count=$(wc -l "$log_file" | awk '{print $1}')
-
-            if (( current_line_count == last_line_count )); then
-                # 文件没有更新，程序卡住，执行重启操作
-                if $is_running; then
-                    echo "$(date) prover.log 文件在过去 $check_interval 秒内没有更新，准备重新启动矿工..." | tee -a "$log_file"
-
-                    # 重启矿工
-                    restart_miner
-
-                    # 在 prover.log 文件中记录重启日志
-                    echo "$(date) 矿工程序重启。" >> "$log_file"
-
-                    # 将状态重置为“不正常”
-                    is_running=false
-                fi
-            else
-                # 文件有更新，表示运行正常
-                if ! $is_running; then
-                    echo "$(date) 监控到程序正常运行，prover.log 正在更新。" | tee -a "$log_file"
-                    is_running=true
-                fi
-
-                # 更新行数
-                last_line_count=$current_line_count
+        if pgrep -f "$process_name" > /dev/null; then
+            # 进程存在，表示运行正常
+            if ! $is_running; then
+                echo "$(date) 监控到程序正常运行，$process_name 正在运行。" >> /root/aleo_prover/prover.log
+                is_running=true
             fi
         else
-            echo "$(date) 无法找到 prover.log 文件，可能矿工未正确启动。" | tee -a "$log_file"
+            # 进程不存在，表示程序未运行
+            if $is_running; then
+                echo "$(date) 发现 $process_name 未运行，准备重新启动程序..." >> /root/aleo_prover/prover.log
+
+                # 重新启动矿工
+                restart_miner
+
+                # 在 prover.log 文件中记录重启日志
+                echo "$(date) 程序已重新启动。" >> /root/aleo_prover/prover.log
+
+                # 将状态重置为“不正常”
+                is_running=false
+            fi
         fi
     done
 }
-# 主菜单
-function main_menu() {
-    while true; do
-        clear
-        echo "zk.word社区一键 zkwork_aleo 脚本"
-        echo "开发者: $DEVELOPER"
-        echo "==========================="
-        echo "1. 安装并运行 zkwork_aleo 挖矿程序（监控，最新版 0.1.1）"
-        echo "2. 安装并运行 zkwork_aleo 挖矿程序（监控,最新hot 0.1.1版本）"
-        echo "3. 安装并运行 zkwork_aleo 挖矿程序（监控,hot 版本 0.1.0）"
-        echo "4. 安装并运行 zkwork_aleo 挖矿程序（监控,标准版 0.1.0）"
-        echo "5. 查看挖矿日志"
-        echo "6. 重启 zkwork_aleo 挖矿程序"
-        echo "7. 卸载 zkwork_aleo 挖矿程序"
-        echo "9. 退出脚本"
-        read -p "请输入选项（1-9）: " OPTION
 
-        case $OPTION in
+# 脚本主菜单
+function main_menu() {
+    echo "选择操作："
+    echo "1. 安装并运行 zkwork_aleo 挖矿程序（标准版）"
+    echo "2. 安装并运行 zkwork_aleo 挖矿程序（hot 版本）"
+    echo "3. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 0.1.0）"
+    echo "4. 卸载 zkwork_aleo 挖矿程序"
+    echo "5. 更新脚本"
+    echo "6. 查看挖矿日志"
+    echo "7. 退出"
+    
+    read -p "请输入选项 [1-7]: " option
+    case $option in
         1) install_and_run_miner ;;
         2) install_and_run_hot_miner ;;
         3) install_and_run_hot_miner_v0_1_0 ;;
-        4) install_and_run_miner_v0_1_0 ;;
-        5) view_logs ;;
-        6) restart_miner ;;
-        7) uninstall_miner ;;
-        9) exit 0 ;;
-        *) echo "无效选项。" ;;
-        esac
-        echo "按任意键返回主菜单..."
-        read -n 1
-    done
+        4) uninstall_miner ;;
+        5) update_script ;;
+        6) view_logs ;;
+        7) exit 0 ;;
+        *) echo "无效选项，请重新选择。" ;;
+    esac
 }
 
-# 显示主菜单
+# 执行主菜单
 main_menu
