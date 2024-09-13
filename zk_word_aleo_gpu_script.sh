@@ -37,7 +37,33 @@ function install_and_run_miner() {
     echo "矿工已启动！"
     echo "你可以使用 'tail -f /root/aleo_prover/prover.log' 命令来查看日志。"
 }
+# 安装并运行 zkwork_aleo 挖矿程序（hot 版本）
+function install_and_run_hot_miner() {
+    # 获取 Aleo 钱包地址
+    read -p "输入你的 Aleo 钱包地址: " aleo_address
 
+    # 切换到 /root 目录
+    cd /root
+
+    # 下载 zkwork 矿工（hot 版本）
+    wget https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.1.1-hot/aleo_prover-v0.1.1_hot.tar.gz
+
+    # 解压和进入目录
+    tar -zvxf aleo_prover-v0.1.1_hot.tar.gz && cd aleo_prover
+
+    # 更新 Aleo 地址并设置自定义矿工名称
+    read -p "输入自定义矿工名称: " miner_name
+    sed -i "s/^reward_address=.*$/reward_address=$aleo_address/" run_prover.sh
+    sed -i "s/^custom_name=\".*\"$/custom_name=\"$miner_name\"/" run_prover.sh
+
+    # 启动矿工
+    chmod +x run_prover.sh
+    ./run_prover.sh &
+
+    # 提示用户矿工已启动
+    echo "矿工已启动！"
+    echo "你可以使用 'tail -f /root/aleo_prover/prover.log' 命令来查看日志。"
+}
 # 查看挖矿日志
 function view_logs() {
     tail -f /root/aleo_prover/prover.log
@@ -74,19 +100,21 @@ function main_menu() {
         echo "zk.word社区一键 zkwork_aleo 脚本"
         echo "开发者: $DEVELOPER"
         echo "==========================="
-        echo "1. 安装并运行 zkwork_aleo 挖矿程序"
-        echo "2. 查看挖矿日志"
-        echo "3. 重启 zkwork_aleo 挖矿程序"
-        echo "4. 卸载 zkwork_aleo 挖矿程序"
-        echo "5. 退出脚本"
-        read -p "请输入选项（1-5）: " OPTION
+        echo "1. 安装并运行 zkwork_aleo 挖矿程序（最新版）"
+        echo "2. 安装并运行 zkwork_aleo 挖矿程序（最新hot 版本）"
+        echo "3. 查看挖矿日志"
+        echo "4. 重启 zkwork_aleo 挖矿程序"
+        echo "5. 卸载 zkwork_aleo 挖矿程序"
+        echo "6. 退出脚本"
+        read -p "请输入选项（1-6）: " OPTION
 
         case $OPTION in
         1) install_and_run_miner ;;
-        2) view_logs ;;
-        3) restart_miner ;;
-        4) uninstall_miner ;;
-        5) exit 0 ;;
+        2) install_and_run_hot_miner ;;
+        3) view_logs ;;
+        4) restart_miner ;;
+        5) uninstall_miner ;;
+        6) exit 0 ;;
         *) echo "无效选项。" ;;
         esac
         echo "按任意键返回主菜单..."
