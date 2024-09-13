@@ -191,7 +191,7 @@ function update_script() {
 # 监控进程
 function monitor_process() {
     local process_name="aleo_prover"
-    local check_interval=80  # 监控间隔时间
+    local check_interval=5  # 监控间隔时间
     local is_running=false
 
     while true; do
