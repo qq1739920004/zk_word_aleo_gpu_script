@@ -218,7 +218,7 @@ function main_menu() {
         echo "zk.work社区一键 zkwork_aleo 脚本"
         echo "开发者: $DEVELOPER"
         echo "==========================="
-        echo "v0.1.2两个版本驱动版本跟cube要求较高，如果太低可能会出现
+        echo "v0.1.2两个版本驱动版本跟CUDA要求较高，如果太低可能会出现
         Failed to create GpuPuzzle:Failed to create aleo prover
 note:run with RUST BACKTRACE=1 environment variable to display a backtrace"
         echo "1. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-stable)）"
