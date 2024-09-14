@@ -15,6 +15,7 @@
 ![image](https://github.com/user-attachments/assets/60eb3f17-85fb-4f49-a692-1adf7bbc11e2)
 
 2.**查看日志**
+![Uploading image.png…]()
 
 ![image](https://github.com/user-attachments/assets/608bfc26-509f-42fe-8361-ec207c3f58ae)
 
