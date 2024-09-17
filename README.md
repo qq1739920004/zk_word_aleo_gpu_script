@@ -12,7 +12,8 @@
 ### 图文教程
 1.**运行脚本**
 
-![image](https://github.com/user-attachments/assets/deeecaa4-d761-4c04-807b-56e48529d98a)
+![image](https://github.com/user-attachments/assets/8704a162-04d9-435e-b474-e39cf6dea1c3)
+
 
 
 2.**查看日志**
