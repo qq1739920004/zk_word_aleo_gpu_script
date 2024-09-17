@@ -9,6 +9,30 @@ if [ "$(id -u)" != "0" ]; then
     echo "请尝试使用 'sudo -i' 命令切换到 root 用户，然后再次运行此脚本。"
     exit 1
 fi
+function install_and_run_miner_v0_2_0(){
+  # 切换到 /root 目录
+    cd /root
+    # 下载 zkwork 矿工（标准版 v0.1.2）
+   wget https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.2.0/aleo_prover-v0.2.0.tar.gz
+    # 获取 Aleo 钱包地址
+    read -p "输入你的 Aleo 钱包地址: " aleo_address
+    # 解压和进入目录
+    tar -zvxf aleo_prover-v0.2.0.tar.gz && cd aleo_prover
+
+    # 更新 Aleo 地址并设置自定义矿工名称
+    read -p "输入自定义矿工名称: " miner_name
+    sed -i "s/^reward_address=.*$/reward_address=$aleo_address/" inner_prover.sh
+    sed -i "s/^custom_name=\".*\"$/custom_name=\"$miner_name\"/" inner_prover.sh
+
+    # 启动矿工
+    chmod +x run_prover.sh
+    ./run_prover.sh &
+    wait  # 等待进程结束
+    # 提示用户矿工已启动
+    # 提示用户矿工已启动
+    echo "矿工已启动！"
+    echo "你可以使用 'tail -f /root/aleo_prover/prover.log' 命令来查看日志。" 
+}
 function install_and_run_miner_pre_v0_1_3(){
   # 切换到 /root 目录
     cd /root
@@ -266,34 +290,36 @@ function main_menu() {
         Failed to create GpuPuzzle:Failed to create aleo prover
 note:run with RUST BACKTRACE=1 environment variable to display a backtrace
         0.1.3相比0.1.2修复了一个网络断开重连时会发生的问题
-"
-        echo "1. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-stable)）"
-        echo "2. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-boost,(cpu好选这个）"
-        echo "3. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-stable)）"
-        echo "4. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-pre,(cpu好选这个）"
-        echo "5. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.1）"
-        echo "6. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.1）"
-        echo "7. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.0）"
-        echo "8. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.0）"
-        echo "9. 查看挖矿日志"
-        echo "10. 重启 zkwork_aleo 挖矿程序"
-        echo "11. 卸载 zkwork_aleo 挖矿程序"
-        echo "12. 退出脚本"
+" 
+        echo "1. 安装并运行 zkwork_aleo 挖矿程序（v0.2.0)）"
+        echo "2. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-stable)）"
+        echo "3. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-boost,(cpu好选这个）"
+        echo "4. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-stable)）"
+        echo "5. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-pre,(cpu好选这个）"
+        echo "6. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.1）"
+        echo "7. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.1）"
+        echo "8. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.0）"
+        echo "9. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.0）"
+        echo "10. 查看挖矿日志"
+        echo "11. 重启 zkwork_aleo 挖矿程序"
+        echo "12. 卸载 zkwork_aleo 挖矿程序"
+        echo "13. 退出脚本"
         read -p "请输入选项（1-10）: " OPTION
 
         case $OPTION in
-        1) install_and_run_miner_v0_1_3 ;;
-        2) install_and_run_miner_pre_v0_1_3 ;;
-        3) install_and_run_miner_v0_1_2 ;;
-        4) install_and_run_miner_pre_v0_1_2 ;;
-        5) install_and_run_miner_v0_1_1 ;;
-        6) install_and_run_hot_miner_v0_1_1 ;;
-        7) install_and_run_hot_miner_v0_1_0 ;;
-        8) install_and_run_miner_v0_1_0 ;;
-        9) view_logs ;;
-        10) restart_miner ;;
-        11) uninstall_miner ;;
-        12) exit 0 ;;
+        1) install_and_run_miner_v0_2_0 ;;
+        2) install_and_run_miner_v0_1_3 ;;
+        3) install_and_run_miner_pre_v0_1_3 ;;
+        4) install_and_run_miner_v0_1_2 ;;
+        5) install_and_run_miner_pre_v0_1_2 ;;
+        6) install_and_run_miner_v0_1_1 ;;
+        7) install_and_run_hot_miner_v0_1_1 ;;
+        8) install_and_run_hot_miner_v0_1_0 ;;
+        9) install_and_run_miner_v0_1_0 ;;
+        10) view_logs ;;
+        11) restart_miner ;;
+        12) uninstall_miner ;;
+        13) exit 0 ;;
         *) echo "无效选项。" ;;
         esac
         echo "按任意键返回主菜单..."
