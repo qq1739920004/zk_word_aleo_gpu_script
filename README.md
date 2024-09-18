@@ -2,8 +2,8 @@
 ## language
 [English](./README_en.md)
 ## 介绍
-[官方discord](https://discord.gg/cxURcWzz)
-这是一个用于管理 zkwork_aleo 矿工程序的脚本，适用于 Ubuntu 系统。该脚本支持安装、运行、重启和卸载矿工程序。一键脚本是ubuntu，此文档还包括 HiveOS 的配置教程。
+- 加入[官方discord](https://discord.gg/cxURcWzz)
+- 这是一个用于管理 zkwork_aleo 矿工程序的脚本，适用于 Ubuntu 系统。该脚本支持安装、运行、重启和卸载矿工程序。一键脚本是ubuntu，此文档还包括 HiveOS 的配置教程。
 ## 要求
 - 操作系统版本：Ubuntu 20.04+
 - Nvidia 驱动程序版本：535.54.03 +
