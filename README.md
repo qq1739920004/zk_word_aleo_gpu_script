@@ -17,7 +17,8 @@
 1.**准备工作（创建钱包)**
 - 谷歌浏览器下载一个[FoxWallet钱包](https://chromewebstore.google.com/search/FoxWallet%20%7C%20Aleo%20Wallet?hl=zh-CN&utm_source=ext_sidebar)插件，
 - 创建一个ALEO钱包
-![image](https://github.com/user-attachments/assets/0026acb6-7696-410f-bfe6-3a6a5f9447b7)
+
+        ![image](https://github.com/user-attachments/assets/0026acb6-7696-410f-bfe6-3a6a5f9447b7)
 
 - 钱包创建好之后复制钱包地址
 - 然后就可以开始挖矿了
