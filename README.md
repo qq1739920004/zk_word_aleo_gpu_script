@@ -20,10 +20,8 @@
 ![image](https://github.com/user-attachments/assets/0026acb6-7696-410f-bfe6-3a6a5f9447b7)
 
 - 钱包创建好之后复制钱包地址
-- 
-![image](https://github.com/user-attachments/assets/da2bfe4c-7979-48da-a683-26481af286b7)
-
 - 然后就可以开始挖矿了
+![image](https://github.com/user-attachments/assets/da2bfe4c-7979-48da-a683-26481af286b7)
 
 2.**运行脚本**
 
