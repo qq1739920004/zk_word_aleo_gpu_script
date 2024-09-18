@@ -1,83 +1,50 @@
 # zkwork_aleo 挖矿一键脚本
-
+## language
+[English](./README_en.md)
 ## 介绍
-
+[官方discord](https://discord.gg/cxURcWzz)
 这是一个用于管理 zkwork_aleo 矿工程序的脚本，适用于 Ubuntu 系统。该脚本支持安装、运行、重启和卸载矿工程序。一键脚本是ubuntu，此文档还包括 HiveOS 的配置教程。
+## 要求
+- 操作系统版本：Ubuntu 20.04+
+- Nvidia 驱动程序版本：535.54.03 +
 ## 使用说明
 1. **一键下载并运行**
 
     ```bash
     wget https://raw.githubusercontent.com/qq1739920004/zk_word_aleo_gpu_script/master/zk_word_aleo_gpu_script.sh -O zkwork_aleo.sh  && chmod +x zkwork_aleo.sh && ./zkwork_aleo.sh
     ```
-### 图文教程
-1.**运行脚本**
+### 完整教程
+1.**准备工作（创建钱包)**
+https://chromewebstore.google.com/search/FoxWallet%20%7C%20Aleo%20Wallet?hl=zh-CN&utm_source=ext_sidebar
+下载一个FoxWallet钱包，创建一个aleo钱包
+![image](https://github.com/user-attachments/assets/0026acb6-7696-410f-bfe6-3a6a5f9447b7)
+钱包创建好之后复制钱包地址
+![image](https://github.com/user-attachments/assets/da2bfe4c-7979-48da-a683-26481af286b7)
+然后就可以开始挖矿了
+
+2.**运行脚本**
 
 ![image](https://github.com/user-attachments/assets/8704a162-04d9-435e-b474-e39cf6dea1c3)
 
 
-
-2.**查看日志**
-
+3.**查看日志**
+发现日志出现算力之后就代表成功运行了
 ![image](https://github.com/user-attachments/assets/e3abdfd8-c0d7-46c8-b644-da98b91c6b8a)
 
+4.**查看收益**
+前往 [zkwork](https://zk.work/)搜索自己的钱包地址就可以看到总收益跟算力曲线 
+超过3个ALEO才会打款，每天9点开始
+![image](https://github.com/user-attachments/assets/b824b301-2229-4875-b1b1-66049533aa8f)
+**教程结束**
 
+### 常见问题
+1.**查看每一百万（MH）算力实时收益**
+aleo.info 的首页 24 Hour Data 栏目
+前往 [zkwork的aleo网站](https://aleo.info/) 的首页 24 Hour Data 栏目查看
 
-
-
-### 文字教程
-
-1. **一键下载并运行**
-
-    ```bash
-    wget https://github.com/qq1739920004/zk_word_aleo_gpu_script/edit/master/zk_word_aleo_gpu_script.sh -O zkwork_aleo.sh  && chmod +x zkwork_aleo.sh && ./zkwork_aleo.sh
-    ```
-
-2. **运行脚本**
-
-    使用 root 权限运行脚本：
-
-    ```bash
-    sudo ./zkwork_aleo.sh
-    ```
-
-    按照提示进行操作：
-
-    - 输入你的 Aleo 钱包地址
-    - 下载并解压矿工程序
-    - 设置自定义矿工名称
-    - 启动矿工程序
-
-3. **查看挖矿日志**
-
-    确保矿工正在运行，然后使用以下命令查看日志：
-
-    ```bash
-    tail -f aleo_prover/prover.log
-    ```
-
-4. **重启矿工**
-
-    脚本会停止并重启矿工程序：
-
-    ```bash
-    sudo ./zkwork_aleo.sh
-    ```
-
-    选择重启矿工选项。
-
-5. **卸载矿工**
-
-    脚本会卸载矿工程序并删除相关文件：
-
-    ```bash
-    # 停止矿工
-    pkill -f run_prover.sh
-    # 删除安装文件
-    rm -rf aleo_prover
-    rm -f aleo_prover-v0.1.1_hot.tar.gz
-    ```
-
-    选择卸载矿工选项。
+2.**挖矿奖励打款时间**
+每 24 小时向矿工支付一次奖励，直接打入启动挖矿软件时填写的 address。如果待支付金额不足 3 ALEO，将不会支付。相关参数可能会根据 Aleo 的 gas 情况随时调整
+[更多问题参考官方解释](https://github.com/6block/zkwork_aleo_gpu_worker/blob/master/FAQ_zh.md)
 
 ### HiveOS 上的配置
 
