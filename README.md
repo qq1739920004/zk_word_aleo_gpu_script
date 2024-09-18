@@ -15,12 +15,12 @@
     ```
 ### 完整教程
 1.**准备工作（创建钱包)**
-https://chromewebstore.google.com/search/FoxWallet%20%7C%20Aleo%20Wallet?hl=zh-CN&utm_source=ext_sidebar
-下载一个FoxWallet钱包，创建一个aleo钱包
+- 谷歌浏览器下载一个[FoxWallet钱包](https://chromewebstore.google.com/search/FoxWallet%20%7C%20Aleo%20Wallet?hl=zh-CN&utm_source=ext_sidebar)，创建一个ALEO钱包
 ![image](https://github.com/user-attachments/assets/0026acb6-7696-410f-bfe6-3a6a5f9447b7)
-钱包创建好之后复制钱包地址
+
+- 钱包创建好之后复制钱包地址
 ![image](https://github.com/user-attachments/assets/da2bfe4c-7979-48da-a683-26481af286b7)
-然后就可以开始挖矿了
+- 然后就可以开始挖矿了
 
 2.**运行脚本**
 
@@ -28,29 +28,29 @@ https://chromewebstore.google.com/search/FoxWallet%20%7C%20Aleo%20Wallet?hl=zh-C
 
 
 3.**查看日志**
-发现日志出现算力之后就代表成功运行了
+- 发现日志出现算力之后就代表成功运行了
 ![image](https://github.com/user-attachments/assets/e3abdfd8-c0d7-46c8-b644-da98b91c6b8a)
 
 4.**查看收益**
-前往 [zkwork](https://zk.work/)搜索自己的钱包地址就可以看到总收益跟算力曲线 
-超过3个ALEO才会打款，每天9点开始
+- 前往 [zkwork](https://zk.work/)搜索自己的钱包地址就可以看到总收益跟算力曲线 
+- 超过3个ALEO才会打款，每天9点开始
 ![image](https://github.com/user-attachments/assets/b824b301-2229-4875-b1b1-66049533aa8f)
 **教程结束**
 
 ### 常见问题
 1.**查看每一百万（MH）算力实时收益**
-aleo.info 的首页 24 Hour Data 栏目
-前往 [zkwork的aleo网站](https://aleo.info/) 的首页 24 Hour Data 栏目查看
+- aleo.info 的首页 24 Hour Data 栏目
+- 前往 [zkwork的aleo网站](https://aleo.info/) 的首页 24 Hour Data 栏目查看
 
 2.**挖矿奖励打款时间**
-每 24 小时向矿工支付一次奖励，直接打入启动挖矿软件时填写的 address。如果待支付金额不足 3 ALEO，将不会支付。相关参数可能会根据 Aleo 的 gas 情况随时调整
-[更多问题参考官方解释](https://github.com/6block/zkwork_aleo_gpu_worker/blob/master/FAQ_zh.md)
+- 每 24 小时向矿工支付一次奖励，直接打入启动挖矿软件时填写的 address。如果待支付金额不足 3 ALEO，将不会支付。相关参数可能会根据 Aleo 的 gas 情况随时调整
+- [更多问题参考官方解释](https://github.com/6block/zkwork_aleo_gpu_worker/blob/master/FAQ_zh.md)
 
 ### HiveOS 上的配置
 
 1. **获取 Aleo 钱包地址**
 
-    从 Foxwallet、Leowallet、Puzzle Wallet 等获取 Aleo 钱包地址。
+   -  从 Foxwallet、Leowallet、Puzzle Wallet 等获取 Aleo 钱包地址。
 
 2. **添加新的 Flight Sheet**
 
@@ -61,7 +61,7 @@ aleo.info 的首页 24 Hour Data 栏目
 官方连接：（https://github.com/6block/zkwork_aleo_gpu_worker/blob/master/README.md）
 3. **开始 Flight Sheet**
 
-    在 HiveOS 控制面板中配置完 Flight Sheet 后，点击 "Start Flight Sheet" 启动挖矿程序。
+  -  在 HiveOS 控制面板中配置完 Flight Sheet 后，点击 "Start Flight Sheet" 启动挖矿程序。
 ## 开发者
 
 此脚本由 ZK.Work 的 DC 社区中 KarenL 开发。
