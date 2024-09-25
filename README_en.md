@@ -67,7 +67,7 @@
 
 2. **Add a New Flight Sheet**
 
-   - **Install URL**: [Download Link](https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.1.1-hot/aleo_prover-v0.1.1_hot.tar.gz)
+   - **Install URL**: [Download Link](https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.2.1/aleo_prover-v0.2.1.tar.gz)
    - **Hash Algorithm**: aleo
    - **Wallet and Worker Template**: %WAL%
    - **Pool URL**: aleo.hk.zk.work:10003
