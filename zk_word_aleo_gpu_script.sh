@@ -325,7 +325,7 @@ function main_menu() {
         echo "12. 重启 zkwork_aleo 挖矿程序"
         echo "13. 卸载 zkwork_aleo 挖矿程序"
         echo "14. 退出脚本"
-        read -p "请输入选项（1-10）: " OPTION
+        read -p "请输入选项（1-14）: " OPTION
 
         case $OPTION in
         1) install_and_run_miner_v0_2_1 ;;
