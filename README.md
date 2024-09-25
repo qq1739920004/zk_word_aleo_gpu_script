@@ -51,22 +51,23 @@
 - 每 24 小时向矿工支付一次奖励，直接打入启动挖矿软件时填写的 address。如果待支付金额不足 3 ALEO，将不会支付。相关参数可能会根据 Aleo 的 gas 情况随时调整
 - [更多问题参考官方解释](https://github.com/6block/zkwork_aleo_gpu_worker/blob/master/FAQ_zh.md)
 
-### HiveOS 上的配置
+# 在 HiveOS 上设置 Aleo 钱包和航班表
 
-1. **获取 Aleo 钱包地址**
+## 1. 获取 Aleo 钱包地址
+- 在 Foxwallet、Leowallet、Puzzle Wallet 等钱包中获取你的 Aleo 钱包地址。
 
-   -  从 Foxwallet、Leowallet、Puzzle Wallet 等获取 Aleo 钱包地址。
+## 2. 添加新的航班表
+- 配置如下：
+### 配置：
 
-2. **添加新的 Flight Sheet**
+- **安装 URL**: [https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.2.1/aleo_prover-v0.2.1.tar.gz](https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.2.1/aleo_prover-v0.2.1.tar.gz)
+- **哈希算法**: aleo
+- **钱包和工作者模板**: %WAL%
+- **池 URL**: aleo.hk.zk.work:10003
 
-    - **安装 URL**: [下载地址](https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.1.1-hot/aleo_prover-v0.1.1_hot.tar.gz)
-    - **哈希算法**: aleo
-    - **钱包和工作模板**: %WAL%
-    - **池 URL**: aleo.hk.zk.work:10003
-官方连接：（https://github.com/6block/zkwork_aleo_gpu_worker/blob/master/README.md）
-3. **开始 Flight Sheet**
+## 3. 启动航班表
+- 完成配置后，启动航班表。
 
-  -  在 HiveOS 控制面板中配置完 Flight Sheet 后，点击 "Start Flight Sheet" 启动挖矿程序。
 ## 开发者
 
 此脚本由 ZK.Work 的 DC 社区中 KarenL 开发。
