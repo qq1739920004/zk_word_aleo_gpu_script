@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/08c6d7f6-b7b9-4d93-83c9-d94298518a51)# zkwork_aleo 挖矿一键脚本
+# zkwork_aleo 挖矿一键脚本
 ## language
 [English](./README_en.md)
 ## 介绍
