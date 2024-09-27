@@ -34,13 +34,13 @@
 
 2. **Run the Script**
 
-![image](https://github.com/user-attachments/assets/9014f960-e75e-4126-80bf-3ea05f2c2529)
+![image](https://github.com/user-attachments/assets/721cc90e-2159-4412-abd1-6cf7588d6b6e)
 
 
 
 3. **Check Logs**
    - Once you see hash power appearing in the logs, it means the miner is running successfully
-![image](https://github.com/user-attachments/assets/292e07bd-f785-4b9f-9e17-c2811edf807b)
+![image](https://github.com/user-attachments/assets/3d7d9ea2-a0ce-4897-8f53-e479927cf5b4)
 
 
 
