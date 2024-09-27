@@ -34,11 +34,13 @@
 
 2. **Run the Script**
 
-   ![image](https://github.com/user-attachments/assets/8704a162-04d9-435e-b474-e39cf6dea1c3)
+![image](https://github.com/user-attachments/assets/584a0bde-d721-4d81-8d89-0855fb1efe3b)
+
 
 3. **Check Logs**
    - Once you see hash power appearing in the logs, it means the miner is running successfully
-   ![image](https://github.com/user-attachments/assets/e3abdfd8-c0d7-46c8-b644-da98b91c6b8a)
+  ![image](https://github.com/user-attachments/assets/a095e508-c36c-447a-acf4-9d8dfc3a7632)
+
 
 4. **Check Earnings**
    - Go to [zkwork](https://zk.work/) and search for your wallet address to view total earnings and hash power charts

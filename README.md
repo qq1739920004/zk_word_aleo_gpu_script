@@ -29,12 +29,14 @@
 
 2.**运行脚本**
 
-![image](https://github.com/user-attachments/assets/8704a162-04d9-435e-b474-e39cf6dea1c3)
+![image](https://github.com/user-attachments/assets/11f01f82-1d1a-4ddc-857f-b31738118eb4)
+
 
 
 3.**查看日志**
 - 发现日志出现算力之后就代表成功运行了
-![image](https://github.com/user-attachments/assets/e3abdfd8-c0d7-46c8-b644-da98b91c6b8a)
+![image](https://github.com/user-attachments/assets/4e633856-a7c2-4f95-9c1d-0faf3caa9fe3)
+
 
 4.**查看收益**
 - 前往 [zkwork](https://zk.work/)搜索自己的钱包地址就可以看到总收益跟算力曲线 
