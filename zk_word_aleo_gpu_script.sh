@@ -9,6 +9,35 @@ if [ "$(id -u)" != "0" ]; then
     echo "请尝试使用 'sudo -i' 命令切换到 root 用户，然后再次运行此脚本。"
     exit 1
 fi
+function install_and_run_miner() {
+    version=$1
+    type=$2
+    base_url="https://github.com/6block/zkwork_aleo_gpu_worker/releases/download"
+
+    # 切换到 /root 目录
+    cd /root
+    # 下载 zkwork 矿工
+    wget "${base_url}/${version}/aleo_prover-${version}${type}.tar.gz"
+    # 获取 Aleo 钱包地址
+    read -p "输入你的 Aleo 钱包地址: " aleo_address
+    # 解压和进入目录
+    tar -zvxf "aleo_prover-${version}${type}.tar.gz" && cd aleo_prover
+
+    # 更新 Aleo 地址并设置自定义矿工名称
+    read -p "输入自定义矿工名称: " miner_name
+    sed -i "s/^reward_address=.*$/reward_address=$aleo_address/" inner_prover.sh
+    sed -i "s/^custom_name=\".*\"$/custom_name=\"$miner_name\"/" inner_prover.sh
+
+    # 启动矿工
+    chmod +x run_prover.sh
+    ./run_prover.sh &
+    wait  # 等待进程结束
+
+    # 提示用户矿工已启动
+    echo "矿工已启动！"
+    echo "你可以使用 'tail -f /root/aleo_prover/prover.log' 命令来查看日志。"
+}
+
 function install_and_run_miner_v0_2_2_lite(){
   # 切换到 /root 目录
     cd /root
@@ -358,42 +387,46 @@ function main_menu() {
         echo "zk.work社区一键 zkwork_aleo 脚本"
         echo "开发者: $DEVELOPER"
         echo "==========================="
-
-        echo "1. 安装并运行 zkwork_aleo 挖矿程序（v0_2_2_full)）"
-        echo "2. 安装并运行 zkwork_aleo 挖矿程序（v0_2_2_lite)）"
-        echo "3. 安装并运行 zkwork_aleo 挖矿程序（v0.2.1)）"
-        echo "4. 安装并运行 zkwork_aleo 挖矿程序（v0.2.0)）"
-        echo "5. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-stable)）"
-        echo "6. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-boost,(cpu好选这个）"
-        echo "7. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-stable)）"
-        echo "8. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-pre,(cpu好选这个）"
-        echo "9. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.1）"
-        echo "10. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.1）"
-        echo "11. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.0）"
-        echo "12. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.0）"
-        echo "13. 查看挖矿日志"
-        echo "14. 重启 zkwork_aleo 挖矿程序"
-        echo "15. 卸载 zkwork_aleo 挖矿程序"
-        echo "16. 退出脚本"
-        read -p "请输入选项（1-16）: " OPTION
+        
+        echo "1. 安装并运行 zkwork_aleo 挖矿程序（v0_2_3_full)）"
+        echo "2. 安装并运行 zkwork_aleo 挖矿程序（v0_2_3_lite)）"
+        echo "3. 安装并运行 zkwork_aleo 挖矿程序（v0_2_2_full)）"
+        echo "4. 安装并运行 zkwork_aleo 挖矿程序（v0_2_2_lite)）"
+        echo "5. 安装并运行 zkwork_aleo 挖矿程序（v0.2.1)）"
+        echo "6. 安装并运行 zkwork_aleo 挖矿程序（v0.2.0)）"
+        echo "7. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-stable)）"
+        echo "8. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-boost,(cpu好选这个）"
+        echo "9. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-stable)）"
+        echo "10. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-pre,(cpu好选这个）"
+        echo "11. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.1）"
+        echo "12. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.1）"
+        echo "13. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.0）"
+        echo "14. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.0）"
+        echo "15. 查看挖矿日志"
+        echo "16. 重启 zkwork_aleo 挖矿程序"
+        echo "17. 卸载 zkwork_aleo 挖矿程序"
+        echo "18. 退出脚本"
+        read -p "请输入选项（1-18）: " OPTION
 
         case $OPTION in
-        1) install_and_run_miner_v0_2_2_full ;;
-        2) install_and_run_miner_v0_2_2_lite ;;
-        3) install_and_run_miner_v0_2_1 ;;
-        4) install_and_run_miner_v0_2_0 ;;
-        5) install_and_run_miner_v0_1_3 ;;
-        6) install_and_run_miner_pre_v0_1_3 ;;
-        7) install_and_run_miner_v0_1_2 ;;
-        8) install_and_run_miner_pre_v0_1_2 ;;
-        9) install_and_run_miner_v0_1_1 ;;
-        10) install_and_run_hot_miner_v0_1_1 ;;
-        11) install_and_run_hot_miner_v0_1_0 ;;
-        12) install_and_run_miner_v0_1_0 ;;
-        13) view_logs ;;
-        14) restart_miner ;;
-        15) uninstall_miner ;;
-        16) exit 0 ;;
+        1) install_and_run_miner "v0.2.3" "_lite" ;;
+        2) install_and_run_miner "v0.2.3" "_full";;
+        3) install_and_run_miner_v0_2_2_full ;;
+        4) install_and_run_miner_v0_2_2_lite ;;
+        5) install_and_run_miner_v0_2_1 ;;
+        6) install_and_run_miner_v0_2_0 ;;
+        7) install_and_run_miner_v0_1_3 ;;
+        8) install_and_run_miner_pre_v0_1_3 ;;
+        9) install_and_run_miner_v0_1_2 ;;
+        10) install_and_run_miner_pre_v0_1_2 ;;
+        11) install_and_run_miner_v0_1_1 ;;
+        12) install_and_run_hot_miner_v0_1_1 ;;
+        13) install_and_run_hot_miner_v0_1_0 ;;
+        14) install_and_run_miner_v0_1_0 ;;
+        15) view_logs ;;
+        16) restart_miner ;;
+        17) uninstall_miner ;;
+        18) exit 0 ;;
         *) echo "无效选项。" ;;
         esac
         echo "按任意键返回主菜单..."
