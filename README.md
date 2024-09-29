@@ -29,13 +29,15 @@
 
 2.**运行脚本**
 
-![image](https://github.com/user-attachments/assets/11f01f82-1d1a-4ddc-857f-b31738118eb4)
+![image](https://github.com/user-attachments/assets/721cc90e-2159-4412-abd1-6cf7588d6b6e)
+
 
 
 
 3.**查看日志**
 - 发现日志出现算力之后就代表成功运行了
-![image](https://github.com/user-attachments/assets/4e633856-a7c2-4f95-9c1d-0faf3caa9fe3)
+![image](https://github.com/user-attachments/assets/3d7d9ea2-a0ce-4897-8f53-e479927cf5b4)
+
 
 
 4.**查看收益**
