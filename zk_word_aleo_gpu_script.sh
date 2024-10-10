@@ -388,45 +388,49 @@ function main_menu() {
         echo "开发者: $DEVELOPER"
         echo "==========================="
         
-        echo "1. 安装并运行 zkwork_aleo 挖矿程序（v0_2_3_full)）"
-        echo "2. 安装并运行 zkwork_aleo 挖矿程序（v0_2_3_lite)）"
-        echo "3. 安装并运行 zkwork_aleo 挖矿程序（v0_2_2_full)）"
-        echo "4. 安装并运行 zkwork_aleo 挖矿程序（v0_2_2_lite)）"
-        echo "5. 安装并运行 zkwork_aleo 挖矿程序（v0.2.1)）"
-        echo "6. 安装并运行 zkwork_aleo 挖矿程序（v0.2.0)）"
-        echo "7. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-stable)）"
-        echo "8. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-boost,(cpu好选这个）"
-        echo "9. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-stable)）"
-        echo "10. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-pre,(cpu好选这个）"
-        echo "11. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.1）"
-        echo "12. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.1）"
-        echo "13. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.0）"
-        echo "14. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.0）"
-        echo "15. 查看挖矿日志"
-        echo "16. 重启 zkwork_aleo 挖矿程序"
-        echo "17. 卸载 zkwork_aleo 挖矿程序"
-        echo "18. 退出脚本"
+        echo "1. 安装并运行 zkwork_aleo 挖矿程序（v0_2_3_lite_fix)）"
+        echo "2. 安装并运行 zkwork_aleo 挖矿程序（v0_2_3_full_fix)）"
+        echo "3. 安装并运行 zkwork_aleo 挖矿程序（v0_2_3_lite)）"
+        echo "4. 安装并运行 zkwork_aleo 挖矿程序（v0_2_3_full)）"
+        echo "5. 安装并运行 zkwork_aleo 挖矿程序（v0_2_2_full)）"
+        echo "6. 安装并运行 zkwork_aleo 挖矿程序（v0_2_2_lite)）"
+        echo "7. 安装并运行 zkwork_aleo 挖矿程序（v0.2.1)）"
+        echo "8. 安装并运行 zkwork_aleo 挖矿程序（v0.2.0)）"
+        echo "9. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-stable)）"
+        echo "10. 安装并运行 zkwork_aleo 挖矿程序（v0.1.3-boost,(cpu好选这个）"
+        echo "11. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-stable)）"
+        echo "12. 安装并运行 zkwork_aleo 挖矿程序（v0.1.2-pre,(cpu好选这个）"
+        echo "13. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.1）"
+        echo "14. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.1）"
+        echo "15. 安装并运行 zkwork_aleo 挖矿程序（hot 版本 v0.1.0）"
+        echo "16. 安装并运行 zkwork_aleo 挖矿程序（标准版 v0.1.0）"
+        echo "17. 查看挖矿日志"
+        echo "18. 重启 zkwork_aleo 挖矿程序"
+        echo "19. 卸载 zkwork_aleo 挖矿程序"
+        echo "20. 退出脚本"
         read -p "请输入选项（1-18）: " OPTION
 
         case $OPTION in
-        1) install_and_run_miner "v0.2.3" "_lite" ;;
-        2) install_and_run_miner "v0.2.3" "_full";;
-        3) install_and_run_miner_v0_2_2_full ;;
-        4) install_and_run_miner_v0_2_2_lite ;;
-        5) install_and_run_miner_v0_2_1 ;;
-        6) install_and_run_miner_v0_2_0 ;;
-        7) install_and_run_miner_v0_1_3 ;;
-        8) install_and_run_miner_pre_v0_1_3 ;;
-        9) install_and_run_miner_v0_1_2 ;;
-        10) install_and_run_miner_pre_v0_1_2 ;;
-        11) install_and_run_miner_v0_1_1 ;;
-        12) install_and_run_hot_miner_v0_1_1 ;;
-        13) install_and_run_hot_miner_v0_1_0 ;;
-        14) install_and_run_miner_v0_1_0 ;;
-        15) view_logs ;;
-        16) restart_miner ;;
-        17) uninstall_miner ;;
-        18) exit 0 ;;
+        1) install_and_run_miner "v0.2.3" "_lite_fix" ;;
+        2) install_and_run_miner "v0.2.3" "_full_fix";;
+        3) install_and_run_miner "v0.2.3" "_lite" ;;
+        4) install_and_run_miner "v0.2.3" "_full";;
+        5) install_and_run_miner_v0_2_2_full ;;
+        6) install_and_run_miner_v0_2_2_lite ;;
+        7) install_and_run_miner_v0_2_1 ;;
+        8) install_and_run_miner_v0_2_0 ;;
+        9) install_and_run_miner_v0_1_3 ;;
+        10) install_and_run_miner_pre_v0_1_3 ;;
+        11) install_and_run_miner_v0_1_2 ;;
+        12) install_and_run_miner_pre_v0_1_2 ;;
+        13) install_and_run_miner_v0_1_1 ;;
+        14) install_and_run_hot_miner_v0_1_1 ;;
+        15) install_and_run_hot_miner_v0_1_0 ;;
+        16) install_and_run_miner_v0_1_0 ;;
+        17) view_logs ;;
+        18) restart_miner ;;
+        19) uninstall_miner ;;
+        20) exit 0 ;;
         *) echo "无效选项。" ;;
         esac
         echo "按任意键返回主菜单..."
